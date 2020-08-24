@@ -1,0 +1,16 @@
+
+
+/client/.idea/
+/client/.vscode/
+/client/node_modules/
+/client/build
+/client/.DS_Store
+/client/*.tgz
+my-app*
+/client/template/src/__tests__/__snapshots__/
+/client/lerna-debug.log
+/client/npm-debug.log*
+/client/yarn-debug.log*
+/client/yarn-error.log*
+/client/.changelog
+/client/.npm/
