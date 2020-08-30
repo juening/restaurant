@@ -34,7 +34,7 @@ class Directory extends Component {
       },
       {
         title: 'CHEF RECOMMENDATIONS',
-        imageUrl: 'https://i.ibb.co/Cb0LshR/Chef.jpg',
+        imageUrl: 'https://i.ibb.co/Z64FvPV/Chef.jpg',
         id: 5,
         linkUrl: 'menu/chefrecommendations',
         size: 'large',
@@ -44,12 +44,8 @@ class Directory extends Component {
   render() {
     return (
       <div className="directory-menu">
-        {this.state.sections.map((section) => (
-          <MenuItem
-            title={section.title}
-            imageUrl={section.imageUrl}
-            size={section.size}
-          />
+        {this.state.sections.map(({ id, ...otherSectionProps }) => (
+          <MenuItem id={id} {...otherSectionProps} />
         ))}
       </div>
     );

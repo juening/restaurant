@@ -1,0 +1,20 @@
+{
+  "name": "masterpiece",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "client": "npm start --prefix client",
+    "clientinstall": "npm install --prefix client"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/juening/restaurant.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/juening/restaurant/issues"
+  },
+  "homepage": "https://github.com/juening/restaurant#readme"
+}
