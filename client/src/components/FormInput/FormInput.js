@@ -5,7 +5,12 @@ import './FormInput.scss';
 const FormInput = ({ handleChange, label, labelFor, ...otherProps }) => {
   return (
     <div className="group">
-      <input type="text" className="form-input" {...otherProps} />
+      <input
+        type="text"
+        className="form-input"
+        onChange={handleChange}
+        {...otherProps}
+      />
       {label ? (
         <label
           className={`${
