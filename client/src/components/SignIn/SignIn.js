@@ -22,7 +22,8 @@ class SignIn extends Component {
     e.preventDefault();
     const { email, password } = this.state;
     try {
-      await auth.signInWithEmailAndPassword(email, password);
+      const user = await auth.signInWithEmailAndPassword(email, password);
+      console.log(user);
       this.setState({ email: '', password: '' });
     } catch (err) {
       console.error(err);
