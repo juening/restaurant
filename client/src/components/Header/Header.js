@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { auth } from '../../firebase/firebase';
 
 import { ReactComponent as Logo } from '../../assets/MP.svg';
+import ShoppingBag from '../ShoppingBag/ShoppingBag';
 
 import './Header.scss';
 
@@ -30,6 +31,7 @@ const Header = ({ currentUser }) => {
             SIGN IN
           </Link>
         )}
+        <ShoppingBag />
       </div>
     </div>
   );
