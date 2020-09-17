@@ -6,10 +6,11 @@ import { auth } from '../../firebase/firebase';
 
 import { ReactComponent as Logo } from '../../assets/MP.svg';
 import ShoppingBag from '../ShoppingBag/ShoppingBag';
+import BagDropdown from '../BagDropdown/BagDropdown';
 
 import './Header.scss';
 
-const Header = ({ currentUser }) => {
+const Header = ({ currentUser, hidden }) => {
   return (
     <div className="header">
       <Link to="/" className="logo-container">
@@ -33,12 +34,14 @@ const Header = ({ currentUser }) => {
         )}
         <ShoppingBag />
       </div>
+      {hidden && <BagDropdown />}
     </div>
   );
 };
 
 const mapStateToProps = (state) => ({
   currentUser: state.user.currentUser,
+  hidden: state.bag.hidden,
 });
 
 export default connect(mapStateToProps)(Header);

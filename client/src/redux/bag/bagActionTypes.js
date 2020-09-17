@@ -1,0 +1,1 @@
+export const TOGGLE_BAG_HIDDEN = 'TOGGLE_BAG_HIDDEN';

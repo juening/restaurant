@@ -39,7 +39,7 @@ class App extends Component {
         <Header currentUser={currentUser} />
         <Switch>
           <Route exact path="/" component={HomePage} />
-          <Route exact path="/menu" component={MenuPage} />
+          <Route path="/menu" component={MenuPage} />
           <Route
             exact
             path="/signin"
