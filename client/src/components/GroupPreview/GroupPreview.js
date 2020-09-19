@@ -12,8 +12,8 @@ const GroupPreview = ({ title, items }) => {
       <div className="preview">
         {items
           .filter((group, idx) => idx < 4)
-          .map(({ id, ...otherItemProps }) => (
-            <GroupItem key={id} {...otherItemProps} />
+          .map((item) => (
+            <GroupItem key={item.id} item={item} />
           ))}
       </div>
     </div>
