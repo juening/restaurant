@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+import { selectBagItemsCount } from '../../redux/bag/bagSelector';
 import { toggleBagHidden } from '../../redux/bag/bagActions';
 
 import { ReactComponent as BagIcon } from '../../assets/ShoppingBag.svg';
@@ -15,7 +16,7 @@ const ShoppingBag = ({ toggleBagHidden, itemCount }) => (
 );
 
 const mapStateToProps = (state) => ({
-  itemCount: state.bag.bagItems.reduce((acc, item) => acc + item.quantity, 0),
+  itemCount: selectBagItemsCount(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({
