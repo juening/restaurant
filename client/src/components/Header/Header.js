@@ -38,7 +38,7 @@ const Header = ({ currentUser, hidden }) => {
         )}
         <ShoppingBag />
       </div>
-      {hidden && <BagDropdown />}
+      {!hidden && <BagDropdown />}
     </div>
   );
 };

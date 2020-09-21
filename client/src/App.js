@@ -10,6 +10,7 @@ import HomePage from './pages/HomePage/HomePage';
 import MenuPage from './pages/MenuPage/MenuPage';
 import AuthPage from './pages/AuthPage/AuthPage';
 import Header from './components/Header/Header';
+import CheckoutPage from './pages/CheckoutPage/CheckoutPage';
 
 import { auth, createUserProfileDocument } from './firebase/firebase';
 import { setCurrentUser } from './redux/user/userActions';
@@ -42,6 +43,7 @@ class App extends Component {
         <Header currentUser={currentUser} />
         <Switch>
           <Route exact path="/" component={HomePage} />
+          <Route exact path="/checkout" component={CheckoutPage} />
           <Route path="/menu" component={MenuPage} />
           <Route
             exact
