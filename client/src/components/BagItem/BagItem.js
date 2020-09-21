@@ -2,7 +2,8 @@ import React from 'react';
 
 import './BagItem.scss';
 
-const BagItem = ({ item: { name, imageUrl, price, quantity } }) => {
+const BagItem = ({ item }) => {
+  const { name, imageUrl, price, quantity } = item;
   return (
     <div className="bag-item">
       <img src={imageUrl} alt="item" />

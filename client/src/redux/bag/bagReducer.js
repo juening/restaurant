@@ -1,5 +1,10 @@
-import { ADD_ITEM, TOGGLE_BAG_HIDDEN } from './bagActionTypes';
-import { addItemToBag } from './bagUtils';
+import {
+  ADD_ITEM,
+  CLEAR_ITEM_FROM_BAG,
+  REMOVE_ITEM,
+  TOGGLE_BAG_HIDDEN,
+} from './bagActionTypes';
+import { addItemToBag, removeItemFromBag } from './bagUtils';
 
 const INITIAL_STATE = {
   hidden: true,
@@ -15,6 +20,20 @@ const bagReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         bagItems: addItemToBag(state.bagItems, action.payload),
+      };
+
+    case REMOVE_ITEM:
+      return {
+        ...state,
+        bagItems: removeItemFromBag(state.bagItems, action.payload),
+      };
+
+    case CLEAR_ITEM_FROM_BAG:
+      return {
+        ...state,
+        bagItems: state.bagItems.filter(
+          (item) => item.id !== action.payload.id
+        ),
       };
 
     default:

@@ -13,3 +13,19 @@ export const addItemToBag = (bagItems, itemToAdd) => {
 
   return [...bagItems, { ...itemToAdd, quantity: 1 }];
 };
+
+export const removeItemFromBag = (bagItems, itemToRemove) => {
+  const existingBagItem = bagItems.find(
+    (bagItem) => bagItem.id === itemToRemove.id
+  );
+
+  if (existingBagItem.quantity === 1) {
+    return bagItems.filter((bagItem) => bagItem.id !== itemToRemove.id);
+  }
+
+  return bagItems.map((item) =>
+    item.id === itemToRemove.id
+      ? { ...item, quantity: item.quantity - 1 }
+      : item
+  );
+};
