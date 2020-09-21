@@ -1,8 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { createStructuredSelector } from 'reselect';
 
 import { auth } from '../../firebase/firebase';
+
+import { selectCurrentUser } from '../../redux/user/userSelector';
+import { selectBagHidden } from '../../redux/bag/bagSelector';
 
 import { ReactComponent as Logo } from '../../assets/MP.svg';
 import ShoppingBag from '../ShoppingBag/ShoppingBag';
@@ -39,9 +43,9 @@ const Header = ({ currentUser, hidden }) => {
   );
 };
 
-const mapStateToProps = (state) => ({
-  currentUser: state.user.currentUser,
-  hidden: state.bag.hidden,
+const mapStateToProps = createStructuredSelector({
+  currentUser: selectCurrentUser,
+  hidden: selectBagHidden,
 });
 
 export default connect(mapStateToProps)(Header);
