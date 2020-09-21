@@ -6,10 +6,11 @@ import { withRouter } from 'react-router-dom';
 import { selectBagItems } from '../../redux/bag/bagSelector';
 import CustomButtom from '../CustomButton/CustomButton';
 import BagItem from '../BagItem/BagItem';
+import { toggleBagHidden } from '../../redux/bag/bagActions';
 
 import './BagDropdown.scss';
 
-const BagDropdown = ({ bagItems, history }) => {
+const BagDropdown = ({ bagItems, history, dispatch }) => {
   return (
     <div className="bag-dropdown">
       <div className="bag-items">
@@ -19,7 +20,12 @@ const BagDropdown = ({ bagItems, history }) => {
           <span className="empty-message">Your bag is empty.</span>
         )}
       </div>
-      <CustomButtom onClick={() => history.push('/checkout')}>
+      <CustomButtom
+        onClick={() => {
+          history.push('/checkout');
+          dispatch(toggleBagHidden());
+        }}
+      >
         GO TO CHECKOUT
       </CustomButtom>
     </div>
