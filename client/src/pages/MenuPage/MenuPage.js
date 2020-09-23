@@ -1,25 +1,25 @@
-import React, { Component } from 'react';
-
-import './MenuPage.scss';
-import ONLINE_MENU_ITEMS from './onlineMunuData';
+import React from 'react';
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
 
 import GroupPreview from '../../components/GroupPreview/GroupPreview';
+import { selectMenuSections } from '../../redux/menu/menuSelector';
 
-class MenuPage extends Component {
-  state = {
-    menuGroups: ONLINE_MENU_ITEMS,
-  };
+import './MenuPage.scss';
 
-  render() {
-    const { menuGroups } = this.state;
-    return (
-      <div className="menu-page">
-        {menuGroups.map(({ id, title, items }) => (
-          <GroupPreview key={id} title={title} items={items} />
-        ))}
-      </div>
-    );
-  }
-}
+const MenuPage = ({ menuGroups }) => {
+  console.log(menuGroups);
+  return (
+    <div className="menu-page">
+      {menuGroups.map(({ id, title, items }) => (
+        <GroupPreview key={id} title={title} items={items} />
+      ))}
+    </div>
+  );
+};
 
-export default MenuPage;
+const mapStateToProps = createStructuredSelector({
+  menuGroups: selectMenuSections,
+});
+
+export default connect(mapStateToProps)(MenuPage);
