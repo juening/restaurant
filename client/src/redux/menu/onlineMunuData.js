@@ -1,8 +1,8 @@
-const ONLINE_MENU_ITEMS = [
-  {
+const ONLINE_MENU_ITEMS = {
+  appetizers: {
     id: 1,
     title: 'APPETIZERS',
-    routeName: 'hatsappetizers',
+    routeName: 'appetizers',
     items: [
       {
         id: 11,
@@ -76,7 +76,7 @@ const ONLINE_MENU_ITEMS = [
       },
     ],
   },
-  {
+  soupsandsalads: {
     id: 2,
     title: 'SOUPS AND SALADS',
     routeName: 'soupsandsalads',
@@ -145,7 +145,7 @@ const ONLINE_MENU_ITEMS = [
       },
     ],
   },
-  {
+  drinks: {
     id: 3,
     title: 'Drinks',
     routeName: 'drinks',
@@ -191,7 +191,7 @@ const ONLINE_MENU_ITEMS = [
       },
     ],
   },
-  {
+  entrees: {
     id: 4,
     title: 'Entrees',
     routeName: 'entrees',
@@ -253,7 +253,7 @@ const ONLINE_MENU_ITEMS = [
       },
     ],
   },
-  {
+  chefs: {
     id: 5,
     title: 'Chef Recommendations',
     routeName: 'chefs',
@@ -306,6 +306,6 @@ const ONLINE_MENU_ITEMS = [
       },
     ],
   },
-];
+};
 
 export default ONLINE_MENU_ITEMS;

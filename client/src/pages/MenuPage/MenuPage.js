@@ -1,25 +1,18 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { createStructuredSelector } from 'reselect';
+import { Route } from 'react-router-dom';
 
-import GroupPreview from '../../components/GroupPreview/GroupPreview';
-import { selectMenuSections } from '../../redux/menu/menuSelector';
+import GroupOverview from '../../components/GroupOverview/GroupOverview';
+import CategoryPage from '../CategoryPage/CategoryPage';
 
 import './MenuPage.scss';
 
-const MenuPage = ({ menuGroups }) => {
-  console.log(menuGroups);
+const MenuPage = ({ match }) => {
   return (
     <div className="menu-page">
-      {menuGroups.map(({ id, title, items }) => (
-        <GroupPreview key={id} title={title} items={items} />
-      ))}
+      <Route exact path={`${match.path}`} component={GroupOverview} />
+      <Route path={`${match.path}/:categoryId`} component={CategoryPage} />
     </div>
   );
 };
 
-const mapStateToProps = createStructuredSelector({
-  menuGroups: selectMenuSections,
-});
-
-export default connect(mapStateToProps)(MenuPage);
+export default MenuPage;
