@@ -7,6 +7,11 @@ export const selectMenuGroups = createSelector(
   (selectMenu) => selectMenu.menuGroups
 );
 
+export const selectCategoriesForOverview = createSelector(
+  [selectMenuGroups],
+  (categories) => Object.keys(categories).map((key) => categories[key])
+);
+
 export const selectCategory = (categoryUrlParam) =>
   createSelector(
     [selectMenuGroups],

@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
-import { selectMenuGroups } from '../../redux/menu/menuSelector';
+import { selectCategoriesForOverview } from '../../redux/menu/menuSelector';
 
 import GroupPreview from '../GroupPreview/GroupPreview';
 
@@ -19,7 +19,7 @@ const GroupOverview = ({ menuGroups }) => {
 };
 
 const mapStateToProps = createStructuredSelector({
-  menuGroups: selectMenuGroups,
+  menuGroups: selectCategoriesForOverview,
 });
 
 export default connect(mapStateToProps)(GroupOverview);
