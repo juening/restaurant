@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
 import { selectCurrentUser } from './redux/user/userSelector';
+import { selectCategoriesForOverview } from './redux/menu/menuSelector';
 
 import './App.scss';
 import HomePage from './pages/HomePage/HomePage';
@@ -12,14 +13,18 @@ import AuthPage from './pages/AuthPage/AuthPage';
 import Header from './components/Header/Header';
 import CheckoutPage from './pages/CheckoutPage/CheckoutPage';
 
-import { auth, createUserProfileDocument } from './firebase/firebase';
+import {
+  auth,
+  createUserProfileDocument,
+  addCollectionAndDocuments,
+} from './firebase/firebase';
 import { setCurrentUser } from './redux/user/userActions';
 
 class App extends Component {
   unsubscribeFromAuth = null;
 
   componentDidMount() {
-    const { setCurrentUser } = this.props;
+    const { setCurrentUser, categories } = this.props;
     this.unsubscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
       if (userAuth) {
         const userRef = await createUserProfileDocument(userAuth);
@@ -30,6 +35,11 @@ class App extends Component {
         setCurrentUser(userAuth);
       }
     });
+
+    // addCollectionAndDocuments(
+    //   'categories',
+    //   categories.map(({ items, title }) => ({ items, title }))
+    // );
   }
 
   componentWillUnmount() {
@@ -58,6 +68,7 @@ class App extends Component {
 
 const mapStateToProps = createStructuredSelector({
   currentUser: selectCurrentUser,
+  categories: selectCategoriesForOverview,
 });
 
 const mapDispatchToProps = (dispatch) => ({
