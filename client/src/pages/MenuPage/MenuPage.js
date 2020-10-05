@@ -4,13 +4,18 @@ import { connect } from 'react-redux';
 
 import { firestore, convertCollectionToMap } from '../../firebase/firebase';
 
+import WithSpinner from '../../components/WithSpinner/WithSpinner';
 import GroupOverview from '../../components/GroupOverview/GroupOverview';
 import CategoryPage from '../CategoryPage/CategoryPage';
 import { updateMenu } from '../../redux/menu/menuActions';
 
 import './MenuPage.scss';
 
+const GroupOverviewWithSpinner = WithSpinner(GroupOverview);
+const CetegoryPageWithSpinner = WithSpinner(CategoryPage);
+
 class MenuPage extends Component {
+  state = { loading: true };
   unsubscribeFromSnapshot = null;
 
   componentDidMount() {
@@ -18,17 +23,27 @@ class MenuPage extends Component {
     const categoryRef = firestore.collection('categories');
     this.unsubscribeFromSnapshot = categoryRef.onSnapshot(async (snapshot) => {
       const categoriesMap = convertCollectionToMap(snapshot);
-      console.log(categoriesMap);
       updateMenu(categoriesMap);
+      this.setState({ loading: false });
     });
   }
 
   render() {
     const { match } = this.props;
+    const { loading } = this.state;
     return (
       <div className="menu-page">
-        <Route exact path={`${match.path}`} component={GroupOverview} />
-        <Route path={`${match.path}/:categoryId`} component={CategoryPage} />
+        <Route
+          exact
+          path={`${match.path}`}
+          render={(props) => (
+            <GroupOverviewWithSpinner isLoading={loading} {...props} />
+          )}
+        />
+        <Route
+          path={`${match.path}/:categoryId`}
+          render={(props) => <CategoryPage isLoading={loading} {...props} />}
+        />
       </div>
     );
   }

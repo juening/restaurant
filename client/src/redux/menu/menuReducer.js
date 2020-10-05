@@ -1,8 +1,7 @@
 import { UPDATE_MENU } from './menuActionTypes';
-import ONLINE_MENU_ITMES from './onlineMunuData';
 
 const INITIAL_STATE = {
-  menuGroups: ONLINE_MENU_ITMES,
+  menuGroups: null,
 };
 
 const menuReducer = (state = INITIAL_STATE, action) => {

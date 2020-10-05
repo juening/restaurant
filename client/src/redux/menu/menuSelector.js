@@ -9,11 +9,11 @@ export const selectMenuGroups = createSelector(
 
 export const selectCategoriesForOverview = createSelector(
   [selectMenuGroups],
-  (categories) => Object.keys(categories).map((key) => categories[key])
+  (categories) =>
+    categories ? Object.keys(categories).map((key) => categories[key]) : null
 );
 
 export const selectCategory = (categoryUrlParam) =>
-  createSelector(
-    [selectMenuGroups],
-    (categories) => categories[categoryUrlParam]
+  createSelector([selectMenuGroups], (categories) =>
+    categories ? categories[categoryUrlParam] : null
   );
