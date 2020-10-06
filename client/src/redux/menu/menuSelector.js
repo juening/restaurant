@@ -14,6 +14,7 @@ export const selectCategoriesForOverview = createSelector(
 );
 
 export const selectCategory = (categoryUrlParam) =>
-  createSelector([selectMenuGroups], (categories) =>
-    categories ? categories[categoryUrlParam] : null
-  );
+  createSelector([selectMenuGroups], (categories) => {
+    console.log(categoryUrlParam);
+    return categories ? categories[categoryUrlParam] : null;
+  });

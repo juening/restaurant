@@ -12,7 +12,7 @@ import { updateMenu } from '../../redux/menu/menuActions';
 import './MenuPage.scss';
 
 const GroupOverviewWithSpinner = WithSpinner(GroupOverview);
-const CetegoryPageWithSpinner = WithSpinner(CategoryPage);
+const CategoryPageWithSpinner = WithSpinner(CategoryPage);
 
 class MenuPage extends Component {
   state = { loading: true };
@@ -23,6 +23,7 @@ class MenuPage extends Component {
     const categoryRef = firestore.collection('categories');
     this.unsubscribeFromSnapshot = categoryRef.onSnapshot(async (snapshot) => {
       const categoriesMap = convertCollectionToMap(snapshot);
+      console.log(categoriesMap);
       updateMenu(categoriesMap);
       this.setState({ loading: false });
     });
@@ -42,7 +43,9 @@ class MenuPage extends Component {
         />
         <Route
           path={`${match.path}/:categoryId`}
-          render={(props) => <CategoryPage isLoading={loading} {...props} />}
+          render={(props) => (
+            <CategoryPageWithSpinner isLoading={loading} {...props} />
+          )}
         />
       </div>
     );

@@ -6,6 +6,7 @@ import GroupItem from '../../components/GroupItem/GroupItem';
 import './CategoryPage.scss';
 
 const Categorypage = ({ category }) => {
+  console.log(category);
   const { title, items } = category;
   return (
     <div className="category-page">
