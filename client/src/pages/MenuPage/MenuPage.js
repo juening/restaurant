@@ -5,14 +5,14 @@ import { connect } from 'react-redux';
 import GroupOverviewContainer from '../../components/GroupOverview/GroupOverviewContainer';
 import CategoryPageContainer from '../CategoryPage/CategoryPageContainer';
 
-import { fetchMenuAsync } from '../../redux/menu/menuActions';
+import { fetchMenuStart } from '../../redux/menu/menuActions';
 
 import './MenuPage.scss';
 
 class MenuPage extends Component {
   componentDidMount() {
-    const { fetchMenu } = this.props;
-    fetchMenu();
+    const { fetchMenuStart } = this.props;
+    fetchMenuStart();
   }
 
   render() {
@@ -39,7 +39,7 @@ class MenuPage extends Component {
 // });
 
 const mapDispatchToProps = (dispatch) => ({
-  fetchMenu: () => dispatch(fetchMenuAsync()),
+  fetchMenuStart: () => dispatch(fetchMenuStart()),
 });
 
 export default connect(null, mapDispatchToProps)(MenuPage);
