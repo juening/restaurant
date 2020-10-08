@@ -10,7 +10,7 @@ import { selectBagHidden } from '../../redux/bag/bagSelector';
 
 import { ReactComponent as Logo } from '../../assets/MP.svg';
 import ShoppingBag from '../ShoppingBag/ShoppingBag';
-import BagDropdown from '../BagDropdown/BagDropdown';
+import BagDropdownContainer from '../BagDropdown/BagDropdownContainer';
 
 import './Header.scss';
 
@@ -38,7 +38,7 @@ const Header = ({ currentUser, hidden }) => {
         )}
         <ShoppingBag />
       </div>
-      {!hidden && <BagDropdown />}
+      {!hidden && <BagDropdownContainer />}
     </div>
   );
 };

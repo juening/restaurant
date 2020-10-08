@@ -1,9 +1,5 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { createStructuredSelector } from 'reselect';
-import { withRouter } from 'react-router-dom';
 
-import { selectBagItems } from '../../redux/bag/bagSelector';
 import CustomButtom from '../CustomButton/CustomButton';
 import BagItem from '../BagItem/BagItem';
 import { toggleBagHidden } from '../../redux/bag/bagActions';
@@ -32,8 +28,4 @@ const BagDropdown = ({ bagItems, history, dispatch }) => {
   );
 };
 
-const mapStateToProps = createStructuredSelector({
-  bagItems: selectBagItems,
-});
-
-export default withRouter(connect(mapStateToProps)(BagDropdown));
+export default BagDropdown;

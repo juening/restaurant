@@ -18,11 +18,6 @@ export const selectCategory = (categoryUrlParam) =>
     return categories ? categories[categoryUrlParam] : null;
   });
 
-export const selectMenuGroupsFetching = createSelector(
-  [selectMenu],
-  (selectMenu) => selectMenu.isFetching
-);
-
 export const selectMenuGroupsLoaded = createSelector(
   [selectMenu],
   (selectMenu) => !!selectMenu.menuGroups

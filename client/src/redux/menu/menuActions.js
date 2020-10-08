@@ -8,7 +8,6 @@ import { firestore, convertCollectionToMap } from '../../firebase/firebase';
 
 export const fetchMenuAsync = () => (dispatch) => {
   dispatch(fetchMenuStart());
-  console.log('caeed');
   const menuCategoriesRef = firestore.collection('categories');
   menuCategoriesRef
     .get()
