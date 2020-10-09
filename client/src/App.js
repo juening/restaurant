@@ -13,29 +13,28 @@ import AuthPage from './pages/AuthPage/AuthPage';
 import Header from './components/Header/Header';
 import CheckoutPage from './pages/CheckoutPage/CheckoutPage';
 
-import {
-  auth,
-  createUserProfileDocument,
-  addCollectionAndDocuments,
-} from './firebase/firebase';
-import { setCurrentUser } from './redux/user/userActions';
+// import {
+//   auth,
+//   createUserProfileDocument,
+//   addCollectionAndDocuments,
+// } from './firebase/firebase';
+// import { setCurrentUser } from './redux/user/userActions';
 
 class App extends Component {
   unsubscribeFromAuth = null;
 
   componentDidMount() {
-    const { setCurrentUser, categories } = this.props;
-    this.unsubscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
-      if (userAuth) {
-        const userRef = await createUserProfileDocument(userAuth);
-        userRef.onSnapshot((snapshot) => {
-          setCurrentUser({ id: snapshot.id, ...snapshot.data() });
-        });
-      } else {
-        setCurrentUser(userAuth);
-      }
-    });
-
+    // const { setCurrentUser, categories } = this.props;
+    // this.unsubscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
+    //   if (userAuth) {
+    //     const userRef = await createUserProfileDocument(userAuth);
+    //     userRef.onSnapshot((snapshot) => {
+    //       setCurrentUser({ id: snapshot.id, ...snapshot.data() });
+    //     });
+    //   } else {
+    //     setCurrentUser(userAuth);
+    //   }
+    // });
     // addCollectionAndDocuments(
     //   'categories',
     //   categories.map(({ items, title }) => ({ items, title }))
@@ -71,8 +70,6 @@ const mapStateToProps = createStructuredSelector({
   categories: selectCategoriesForOverview,
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  setCurrentUser: (user) => dispatch(setCurrentUser(user)),
-});
+const mapDispatchToProps = (dispatch) => ({});
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

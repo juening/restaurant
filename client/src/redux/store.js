@@ -4,7 +4,7 @@ import { persistStore } from 'redux-persist';
 import createSagaMiddleware from 'redux-saga';
 
 import rootReducer from './rootReducer';
-import { fetchMenuStart } from './menu/menuSagas';
+import rootSaga from './rootSaga';
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -15,6 +15,6 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 export const store = createStore(rootReducer, applyMiddleware(...middlewares));
-sagaMiddleware.run(fetchMenuStart);
+sagaMiddleware.run(rootSaga);
 
 export const persistor = persistStore(store);
