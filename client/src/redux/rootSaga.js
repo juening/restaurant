@@ -1,7 +1,8 @@
 import { all, call } from 'redux-saga/effects';
-import { fetchMenuStart } from './menu/menuSagas';
+import { menuSagas } from './menu/menuSagas';
 import { userSagas } from './user/userSagas';
+import {bagSagas } from './bag/bagSagas'
 
 export default function* rootSaga() {
-  yield all([call(fetchMenuStart), call(userSagas)]);
+  yield all([call(menuSagas), call(userSagas), call(bagSagas)]);
 }

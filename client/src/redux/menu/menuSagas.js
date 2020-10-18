@@ -1,5 +1,5 @@
 import { FETCH_MENU_START } from './menuActionTypes';
-import { takeLatest, call, put } from 'redux-saga/effects';
+import { takeLatest, call, put, all } from 'redux-saga/effects';
 
 import { firestore, convertCollectionToMap } from '../../firebase/firebase';
 import { fetchMenuSuccess, fetchMenuFailure } from './menuActions';
@@ -20,4 +20,8 @@ export function* fetchMenuAsync() {
 
 export function* fetchMenuStart() {
   yield takeLatest(FETCH_MENU_START, fetchMenuAsync);
+}
+
+export function* menuSagas () {
+  yield all([call(fetchMenuStart)])
 }

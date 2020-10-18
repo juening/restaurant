@@ -4,6 +4,11 @@ import {
   SIGN_IN_SUCCESS,
   EMAIL_SIGN_IN_START,
   CHECK_USER_SESSION,
+  SIGN_OUT_START,
+  SIGN_OUT_SUCCESS,
+  SIGN_OUT_FAILURE,
+  SIGN_UP_START,
+  SIGN_UP_SUCCESS,SIGN_UP_FAILURE
 } from './userActionTypes';
 
 export const googleSignInStart = () => ({
@@ -28,3 +33,30 @@ export const emailSignInStart = (userCredentials) => ({
 export const checkUserSession = () => ({
   type: CHECK_USER_SESSION,
 });
+
+export const signOutStart = () => ({
+  type:SIGN_OUT_START
+});
+
+export const signOutSuccess = () => ({
+  type:SIGN_OUT_SUCCESS
+});
+
+export const signOutFailure = () => ({
+  type:SIGN_OUT_FAILURE
+})
+
+export const signUpStart =(userCredentials) =>({
+  type:SIGN_UP_START,
+  payload:userCredentials
+}) 
+
+export const signUpSuccess = ({user, additionalData}) => ({
+  type:SIGN_UP_SUCCESS,
+  payload:{user, additionalData}
+});
+
+export const signUpFailure = err => ({
+  type:SIGN_UP_FAILURE,
+  payload:err
+})

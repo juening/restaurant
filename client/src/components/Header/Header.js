@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { createStructuredSelector } from 'reselect';
 
-import { auth } from '../../firebase/firebase';
+import {signOutStart, signOutSuccess} from '../../redux/user/userActions'
 
 import { selectCurrentUser } from '../../redux/user/userSelector';
 import { selectBagHidden } from '../../redux/bag/bagSelector';
@@ -14,7 +14,7 @@ import BagDropdownContainer from '../BagDropdown/BagDropdownContainer';
 
 import './Header.scss';
 
-const Header = ({ currentUser, hidden }) => {
+const Header = ({ currentUser, hidden , signOutStart}) => {
   return (
     <div className="header">
       <Link to="/" className="logo-container">
@@ -28,7 +28,7 @@ const Header = ({ currentUser, hidden }) => {
           CONTACT US
         </Link>
         {currentUser ? (
-          <div className="option" onClick={() => auth.signOut()}>
+          <div className="option" onClick={signOutStart}>
             SIGN OUT
           </div>
         ) : (
@@ -48,4 +48,8 @@ const mapStateToProps = createStructuredSelector({
   hidden: selectBagHidden,
 });
 
-export default connect(mapStateToProps)(Header);
+const mapDispatchToProps = dispatch => ({
+  signOutStart:() => dispatch(signOutStart())
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

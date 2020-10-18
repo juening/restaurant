@@ -3,6 +3,7 @@ import {
   CLEAR_ITEM_FROM_BAG,
   REMOVE_ITEM,
   TOGGLE_BAG_HIDDEN,
+  CLEAR_BAG
 } from './bagActionTypes';
 import { addItemToBag, removeItemFromBag } from './bagUtils';
 
@@ -35,6 +36,11 @@ const bagReducer = (state = INITIAL_STATE, action) => {
           (item) => item.id !== action.payload.id
         ),
       };
+
+      case CLEAR_BAG:
+        return {
+          ...state, bagItems:[]
+        }
 
     default:
       return state;
