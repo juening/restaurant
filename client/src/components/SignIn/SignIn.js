@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {useState } from 'react';
 import { connect } from 'react-redux';
 
 import {
@@ -11,44 +11,38 @@ import CustomButton from '../CustomButton/CustomButton';
 
 import './SignIn.scss';
 
-class SignIn extends Component {
-  state = {
-    email: '',
-    password: '',
-  };
+const SignIn = ({emailSignInStart, googleSignInStart}) => {
+const [user, setUser] = useState({email:'', password:''})
+const {email, password} = user;
 
-  handleChange = (e) => {
+  const handleChange = (e) => {
     const { value, name } = e.target;
-    this.setState({ [name]: value });
+    setUser({...user, [name]: value });
   };
 
-  handleSubmit = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const { emailSignInStart } = this.props;
-    const { email, password } = this.state;
     try {
-      const user = await emailSignInStart({ email, password });
-      this.setState({ email: '', password: '' });
+      await emailSignInStart(user);
+      setUser({ email: '', password: '' });
     } catch (err) {
       console.error(err);
     }
   };
 
-  render() {
-    const { email, password } = this.state;
-    const { googleSignInStart } = this.props;
+
     return (
       <div className="sign-in">
         <h2>I already have an account</h2>
         <span>Sign in with your email and password</span>
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={handleSubmit}>
           <FormInput
             type="text"
             name="email"
             id="email"
             label="email"
             value={email}
-            handleChange={this.handleChange}
+            handleChange={handleChange}
             required
           />
 
@@ -58,7 +52,7 @@ class SignIn extends Component {
             id="password"
             label="password"
             value={password}
-            handleChange={this.handleChange}
+            handleChange={handleChange}
             required
           />
           <div className="buttons">
@@ -74,7 +68,7 @@ class SignIn extends Component {
         </form>
       </div>
     );
-  }
+  
 }
 
 const mapDispatchToProps = (dispatch) => ({

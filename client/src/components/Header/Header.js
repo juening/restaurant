@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { createStructuredSelector } from 'reselect';
 
-import {signOutStart, signOutSuccess} from '../../redux/user/userActions'
+import {signOutStart} from '../../redux/user/userActions'
 
 import { selectCurrentUser } from '../../redux/user/userSelector';
 import { selectBagHidden } from '../../redux/bag/bagSelector';
