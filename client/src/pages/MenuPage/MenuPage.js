@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import { Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 
@@ -9,14 +9,12 @@ import { fetchMenuStart } from '../../redux/menu/menuActions';
 
 import './MenuPage.scss';
 
-class MenuPage extends Component {
-  componentDidMount() {
-    const { fetchMenuStart } = this.props;
-    fetchMenuStart();
-  }
+const MenuPage =({ fetchMenuStart, match } ) => {
 
-  render() {
-    const { match } = this.props;
+  useEffect(() => {
+    fetchMenuStart();
+  }, [fetchMenuStart])
+
 
     return (
       <div className="menu-page">
@@ -32,7 +30,7 @@ class MenuPage extends Component {
       </div>
     );
   }
-}
+
 
 // const mapStateToProps = createStructuredSelector({
 //   isLoaded: selectMenuGroupsLoaded,
