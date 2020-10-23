@@ -1,11 +1,18 @@
 {
   "name": "masterpiece",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "engines":{
+    "node":"12.16.1",
+    "npm":"6.13.4"
+  }, 
   "scripts": {
     "client": "npm start --prefix client",
-    "clientinstall": "npm install --prefix client"
+    "server": "nodemon server.js",
+    "build": "cd client && npm run build",
+    "start": "node server.js",
+    "dev":"concurrently --kill-others-on-fail \"npm run server\" \"npm run client\"",
+    "clientinstall": "npm install --prefix client",
+    "heroku-postbuild": "cd client && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
   },
   "repository": {
     "type": "git",
@@ -16,5 +23,17 @@
   "bugs": {
     "url": "https://github.com/juening/restaurant/issues"
   },
-  "homepage": "https://github.com/juening/restaurant#readme"
+  "homepage": "https://github.com/juening/restaurant#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "compression": "^1.7.4",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "stripe": "^8.115.0"
+  },
+  "devDependencies": {
+    "concurrently": "^5.3.0",
+    "nodemon": "^2.0.6"
+  }
 }
